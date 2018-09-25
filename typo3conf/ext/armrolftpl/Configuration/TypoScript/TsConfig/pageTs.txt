@@ -1,0 +1,61 @@
+TCEFORM.tt_content{
+    header_layout {
+
+    }
+    section_frame {
+
+    }
+}
+
+
+#-----------------------------------
+# RTE Configuration	
+#-----------------------------------
+RTE.classesAnchor >
+RTE {
+    default {
+        # link to site css stylesheet
+        contentCSS = typo3conf/ext/armrolftpl/Resources/Public/css/rte.css
+        
+        showButtons := addToList(formattext)
+ 
+        # clear typical styling
+        classesAnchor =
+        classesLinks = 
+
+        # set classes available to these properties. Paragraph is another name
+        # for block
+        
+        # list all available classes here, otherwise they're removed on RTE save
+        proc.allowTags := addToList(span, pre, code)
+
+        
+        proc.transformBoldAndItalicTags = 1
+        proc.allowTagsInTypolists = br,font,b,i,u,a,img,span
+        proc.entryHTMLparser_db {
+            keepNonMatchedTags = 1
+        }
+        buttons {
+            formatblock {
+                addItems := addToList(div,p,span, pre)
+            }
+            blockstyle {
+                showTagFreeClasses = 1
+                tags {
+                    
+                }
+            }
+            formattext {
+            	addItems := addToList(span, pre)
+            }
+            textstyle { 
+            	showTagFreeClasses = 1
+            	tags {
+            		span {
+            			
+            		}
+            	}
+            }
+        }
+    }
+}

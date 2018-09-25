@@ -1,0 +1,3 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:armrolftpl/Configuration/TypoScript/setup_inc_page.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:armrolftpl/Configuration/TypoScript/setup_inc_content.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:armrolftpl/Configuration/TypoScript/setup_inc_plugin.txt">

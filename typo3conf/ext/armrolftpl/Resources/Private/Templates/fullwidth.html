@@ -1,0 +1,25 @@
+<div id="wrapper">
+    <div class="w1 armfullwidth">
+        <header id="header">
+            <f:format.html parseFuncTSPath="">{header}</f:format.html>	
+        </header>
+        <main role="main">
+            <f:cObject typoscriptObjectPath="lib.banner" />
+            <f:cObject typoscriptObjectPath="lib.armsearch" />
+            <div class="container-fluid">
+                <f:cObject typoscriptObjectPath="lib.breadcrumb" />
+                <div class="row">
+                    <div id="content" class="col-sm-12">
+                        <!--TYPO3SEARCH_begin-->
+                                <f:cObject typoscriptObjectPath="lib.contentmain" />
+                        <!--TYPO3SEARCH_end-->
+                    </div>
+                </div>
+            </div>	
+        </main>
+    </div>
+    <footer id="footer">
+        <f:format.html parseFuncTSPath="">{footer}</f:format.html>
+    </footer>
+    <a href="#" class="btn-top">back to top</a>
+</div>

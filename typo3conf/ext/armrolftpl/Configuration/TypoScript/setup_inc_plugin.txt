@@ -1,0 +1,7 @@
+plugin.tx_powermail.settings.setup {
+    prefill {
+        title = TEXT
+        title.data = GP:tx_powermail|title
+        title.htmlSpecialChars = 1
+    }
+}

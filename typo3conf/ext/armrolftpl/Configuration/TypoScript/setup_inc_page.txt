@@ -1,0 +1,25 @@
+
+page.includeCSS {
+    fileboot1 = typo3conf/ext/armrolftpl/Resources/Public/css/bootstrap.min.css
+    fileboot2 = typo3conf/ext/armrolftpl/Resources/Public/css/bootstrap-theme.min.css
+    fastfont = https://fast.fonts.net/cssapi/e8687673-0656-48d2-bce6-ed9749bded4b.css
+    fastfont.media = all
+    fastfont.external = 1
+    filecss = typo3conf/ext/armrolftpl/Resources/Public/css/main.css
+}
+
+page.includeJSFooter {
+    fileboot1 = typo3conf/ext/armrolftpl/Resources/Public/js/bootstrap.min.js
+    fileslick2 = typo3conf/ext/armrolftpl/Resources/Public/js/arm.js
+}
+
+
+page.10.file.stdWrap.cObject = CASE
+page.10.file.stdWrap.cObject {
+
+    key.data = levelfield:-1, backend_layout_next_level, slide
+    key.override.field = backend_layout
+
+    17 = TEXT
+    17.value =typo3conf/ext/armrolftpl/Resources/Private/Templates/fullwidth.html
+}
