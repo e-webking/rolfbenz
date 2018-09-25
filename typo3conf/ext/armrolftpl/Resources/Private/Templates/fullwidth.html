@@ -1,7 +1,7 @@
-<div id="wrapper">
-    <div class="w1 armfullwidth">
+<div class="wrapper">
+    <div class="armfullwidth">
         <header id="header">
-            <f:format.html parseFuncTSPath="">{header}</f:format.html>	
+            <f:render partial="Header" arguments="{_all}"/>
         </header>
         <main role="main">
             <f:cObject typoscriptObjectPath="lib.banner" />
@@ -18,8 +18,8 @@
             </div>	
         </main>
     </div>
-    <footer id="footer">
-        <f:format.html parseFuncTSPath="">{footer}</f:format.html>
+    <footer class="footer">
+        <f:cObject typoscriptObjectPath="lib.contentfooter" />
     </footer>
     <a href="#" class="btn-top">back to top</a>
 </div>

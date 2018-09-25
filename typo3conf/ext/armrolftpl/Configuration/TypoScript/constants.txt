@@ -1,1 +1,4 @@
-searchPid = 253
+baseUrl = http://rolf.local/
+rootPID = 240
+templatePath = typo3conf/ext/armrolftpl/
+siteFooterUid = 

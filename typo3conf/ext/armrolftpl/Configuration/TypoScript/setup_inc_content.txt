@@ -1,3 +1,14 @@
+## Logo - Begin
+lib.logo = IMAGE
+lib.logo {
+	file = {$templatePath}Resources/Public/images/logo.png
+	file.width = 100
+	altText = Rolf Benz Haus Logo
+  	titleText = Rolf Benz Haus
+  	stdWrap.typolink.parameter = {$rootPID}
+	stdWrap.wrap = |
+}
+
 lib.contentmain = COA
 lib.contentmain.20 = CONTENT
 lib.contentmain.20 {
@@ -575,4 +586,11 @@ tt_content.gridelements_pi1.20.10.setup {
             equals = 1
         }
     }
+}
+
+lib.sitefooter = RECORDS
+lib.sitefooter {
+    tables = tt_content
+    source = {$siteFooterUid}
+    languageField = sys_language_uid
 }

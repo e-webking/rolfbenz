@@ -1,2 +1,7 @@
 /* Main css */
 
+body  {
+    font-family: 'HelveticaNeueW01-45Ligh','HelveticaNeueW01-Thin',"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.42857143;
+}

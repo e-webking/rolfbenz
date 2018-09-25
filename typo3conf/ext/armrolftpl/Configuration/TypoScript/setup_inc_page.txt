@@ -1,25 +1,88 @@
+# page
+page = PAGE
+page.typeNum = 0
+config {
+  doctype = html5
+  doctype(
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie9"> <![endif]-->
+  )
+  baseURL = {$baseUrl}
+  absRefPrefix = {$baseUrl}
+  xhtml_cleaning = all
+  xmlprologue = none
+  metaCharset = utf-8
+  renderCharset = utf-8
+  additionalHeaders = Content-Type:text/html;charset=utf-8
+  simulateStaticDocuments = 0
+  tx_realurl_enable = 0
+  linkVars = L
+  uniqueLinkVars = 1
+  
+  language = de
+  locale_all = de_DE.UTF-8
+  htmlTag_langKey = de-DE
+  sys_language_uid = 0
+  sys_language_overlay = 1
+  sys_language_mode = ignore
+  spamProtectEmailAddresses = 1
+  index_enable = 1
+  index_externals = 1
+  jQueryNoConflict = 1
+  useCacheHash = 0
+  disablePrefixComment = 1
+  disableImgBorderAttr = 1
+  noPageTitle = 2
+  
+  #concatenateCss = 1
+  #compressJs = 1
+  #compressCss = 1
+  removeDefaultCss = 1
+  cache_period = 0 
+  sendCacheHeaders = 0
+  moveJsFromHeaderToFooter = 1
+}
 
+page.headerData.5 = TEXT
+page.headerData.5.field = nav_title // title
+page.headerData.5.wrap = <title>|</title>
+
+page.includeCSSLibs {
+ fastfont = https://fast.fonts.net/cssapi/e8687673-0656-48d2-bce6-ed9749bded4b.css
+ fastfont.media = all
+ fastfont.external = 1
+}
 page.includeCSS {
-    fileboot1 = typo3conf/ext/armrolftpl/Resources/Public/css/bootstrap.min.css
-    fileboot2 = typo3conf/ext/armrolftpl/Resources/Public/css/bootstrap-theme.min.css
-    fastfont = https://fast.fonts.net/cssapi/e8687673-0656-48d2-bce6-ed9749bded4b.css
-    fastfont.media = all
-    fastfont.external = 1
-    filecss = typo3conf/ext/armrolftpl/Resources/Public/css/main.css
+    file01 = typo3conf/ext/armrolftpl/Resources/Public/css/bootstrap.min.css
+    file02 = typo3conf/ext/armrolftpl/Resources/Public/css/bootstrap-theme.min.css
+    file03 = {$templatePath}Resources/Public/css/font-awesome.min.css
+    file04 = {$templatePath}Resources/Public/css/all.css
+    file05 = typo3conf/ext/armrolftpl/Resources/Public/css/main.css
 }
 
 page.includeJSFooter {
-    fileboot1 = typo3conf/ext/armrolftpl/Resources/Public/js/bootstrap.min.js
-    fileslick2 = typo3conf/ext/armrolftpl/Resources/Public/js/arm.js
+    file01 = typo3conf/ext/armrolftpl/Resources/Public/js/bootstrap.min.js
+    file02 = typo3conf/ext/armrolftpl/Resources/Public/js/arm.js
 }
 
+## Add Template
+page.10 = FLUIDTEMPLATE
+page.10 {
 
-page.10.file.stdWrap.cObject = CASE
-page.10.file.stdWrap.cObject {
+    file = {$templatePath}Resources/Private/Templates/fullwidth.html
+    layoutRootPath = {$templatePath}Resources/Private/Layout/
+    partialRootPath = {$templatePath}Resources/Private/Partials/
 
-    key.data = levelfield:-1, backend_layout_next_level, slide
-    key.override.field = backend_layout
+    file.stdWrap.cObject = CASE
+    file.stdWrap.cObject {
 
-    17 = TEXT
-    17.value =typo3conf/ext/armrolftpl/Resources/Private/Templates/fullwidth.html
+        key.data = levelfield:-1, backend_layout_next_level, slide
+        key.override.field = backend_layout
+
+        17 = TEXT
+        17.value = typo3conf/ext/armrolftpl/Resources/Private/Templates/fullwidth.html
+    }
 }
