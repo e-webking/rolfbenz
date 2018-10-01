@@ -1,0 +1,86 @@
+
+.owl-theme .owl-controls .owl-buttons div{
+	color: #FFF; 
+        display: inline-block; zoom: 1;
+	*display: inline;/*IE7 life-saver */ margin:0px;
+	padding: 3px 0px; font-size: 12px;
+	filter: Alpha(Opacity=60);/*IE7 fix*/ opacity: ;
+}
+.owl-theme .owl-controls.clickable .owl-buttons div:hover{
+    filter: Alpha(Opacity=80);/*IE7 fix*/ opacity:0.8; text-decoration: none;
+} 
+
+
+/* preloading images */
+.owl-theme .owl-controls {
+	padding-top:0; text-align: center;
+	-webkit-tap-highlight-color: transparent;	
+}
+.owl-dots{position:absolute; right:40px; bottom:0px; width:25%;}  
+.owl-theme .owl-controls .owl-nav [class*=owl-] {
+	color: #fff;
+	font-size: 14px;
+	margin: 5px;
+	padding: 4px 7px;
+	background: #d6d6d6;
+	display: inline-block;
+	cursor: pointer;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px
+}
+.owl-theme .owl-controls .owl-nav [class*=owl-]:hover {
+	background: #869791; color: #fff;
+	text-decoration: none
+}
+.owl-theme .owl-controls .owl-nav .disabled {opacity: .5; cursor: default}
+.owl-theme .owl-dots .owl-dot {
+	display: inline-block; zoom: 1;	*display:inline;
+}
+.owl-theme .owl-dots .owl-dot span {
+	width:16px; height: 16px; margin:15px 11px;
+	background: #cccccc; display: block; border:1px solid #cccccc;
+	-webkit-backface-visibility: visible;
+	-webkit-transition: opacity 200ms ease;
+	-moz-transition: opacity 200ms ease;
+	-ms-transition: opacity 200ms ease;
+	-o-transition: opacity 200ms ease;
+	transition: opacity 200ms ease;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px
+}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+	background: #fff; border:1px solid #fff;
+}
+.owl-item.loading{
+	min-height: 150px;
+	background: url(../img/ui/AjaxLoader.gif) no-repeat center center
+}
+	
+/*--- Add Our Story Css Carusal ---*/
+.owl-prev{
+	position:absolute; left:15px; top:44%; height:44px; width:36px; text-indent:-99999px;
+	background:url(../images/left-arrow.png) center center no-repeat !important; opacity:0.5;
+	border-radius:0px; margin-top:-22px;
+	}
+.owl-prev:hover, .owl-prev:focus{opacity:1;}
+.owl-next{
+	position:absolute; right:15px; top:44%; height:44px; width:36px; text-indent:-99999px;
+	background:transparent url(../images/right-arrow.png) center center no-repeat !important;
+	border-radius:0px; margin-top:-22px; opacity:0.5;
+	}
+.owl-next:hover, .owl-next:focus{opacity:1;}
+
+
+@media screen and (max-width:767px) {
+.owl-theme .owl-controls .owl-buttons div{display:none;}
+.owl-prev, .owl-next{display:none !important;}
+
+.owl-dots{position:absolute; right:0px; bottom:0px; bottom:35%; width:100%; text-align:center;} 
+.owl-theme .owl-dots .owl-dot span {background:inherit; border:1px solid #fff; width:12px; height: 12px; margin:15px 5px;}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {background: #fff; border:1px solid #fff;}
+
+@media screen and (max-width:480px) {
+.owl-dots{top:170px; display: none} 
+}

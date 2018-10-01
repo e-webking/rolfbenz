@@ -1,4 +1,13 @@
 baseUrl = http://rolf.local/
 rootPID = 240
 templatePath = typo3conf/ext/armrolftpl/
-siteFooterUid = 
+siteFooterUid = 2652
+facebook_url = 
+youtube_url =
+pinterest_url = 
+instagram_url = 
+
+show_facebook=1
+show_youtube=1
+show_pinterest=1
+show_instagram=1

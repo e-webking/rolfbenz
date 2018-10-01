@@ -9,6 +9,19 @@ lib.logo {
 	stdWrap.wrap = |
 }
 
+lib.moblogo = IMAGE
+lib.moblogo {
+    file = {$templatePath}Resources/Public/images/logo.png
+    file.width = 100
+    altText = Rolf Benz Haus Logo
+    titleText = Rolf Benz Haus
+    stdWrap {
+        typolink.parameter = 2
+        typolink.ATagParams = class="mob-logo"
+        wrap = |
+    }
+}
+
 lib.contentmain = COA
 lib.contentmain.20 = CONTENT
 lib.contentmain.20 {
@@ -20,9 +33,9 @@ lib.contentmain.20 {
 lib.banner = CONTENT
 lib.banner {
     table = tt_content
-    select.where = colPos = 3
+    select.where = colPos = 4
     select.orderBy = sorting
-    wrap = <div class="slideshow"><div class="mask"><div class="slideset">|</div></div><div class="container"> <div class="switcher"></div> </div></div>
+    wrap = |
 }
 
 lib.breadcrumb = HMENU
@@ -61,35 +74,38 @@ lib.stdheader.10 {
 
 tt_content.stdWrap.innerWrap.cObject {
     key.field = section_frame
-    32 < .default 
-    32.wrap = <div class="csc-vcenter">|</div>
-    32.20.10.value = valign valign-middle
-    33 < .default 
-    33.wrap = <div class="csc-left-float">|</div>
     100 < .default
-    100.wrap = <div class="bgblack">|</div>
-    101 < .default
-    101.wrap = <div class="bgwhite">|</div>
-    102 < .default
-    102.wrap = <div class="bggrey">|</div>
-    103 < .default
-    103.wrap = <div class="bgbeige">|</div>
-    104 < .default
-    104.wrap = <div class="bgorange">|</div>
-    105 < .default
-    105.wrap = <div class="csc-leftpadding">|</div>
-    106 < .default
-    106.wrap = <div class="csc-rightpadding">|</div>
+    100.wrap = <div class="col-sm-4 col-xs-6">|</div>
+    200 < .default
+    200.wrap = <div class="clearfix visible-xs">|</div>
+    210 < .default
+    210.wrap = <div class="clearfix hidden-xs">|</div>
+}
+
+lib.sitefooter = RECORDS
+lib.sitefooter {
+    tables = tt_content
+    source = {$siteFooterUid}
+    languageField = sys_language_uid
 }
 
 ################
 # grid layouts 
 ################
 tt_content.gridelements_pi1.20.10.setup {
-	
-    # Slide component
+
+    # Slider container
     2 < lib.gridelements.defaultGridSetup
     2 {
+        columns {
+            10 < .default
+	}
+	wrap = <div class="owl-theme owl-carousel">|</div>
+    }
+
+    # Slide component
+    3 < lib.gridelements.defaultGridSetup
+    3 {
         prepend = COA
         prepend {
             10 = COA
@@ -97,7 +113,7 @@ tt_content.gridelements_pi1.20.10.setup {
                 10 = IMG_RESOURCE
                 10 {
                     file {     
-                        import = uploads/tx_armtemplate/
+                        import = uploads/tx_armrolftpl/
                         import.data = field:flexform_field_imagefull
                         width = 2560
                     }
@@ -108,12 +124,10 @@ tt_content.gridelements_pi1.20.10.setup {
                     data = field:flexform_field_imgalt
                     stdWrap.wrap =  ="|" />
                 }
-                
-
                 30 = IMG_RESOURCE
                 30 {
                     file {     
-                        import = uploads/tx_armtemplate/
+                        import = uploads/tx_armrolftpl/
                         import.data = field:flexform_field_imagefull
                         import.data.override = field:flexform_field_imagemid
                         import.data.override.if {
@@ -128,11 +142,10 @@ tt_content.gridelements_pi1.20.10.setup {
                     data = field:flexform_field_imgalt
                     stdWrap.wrap =  ="|" />
                 }
-
                 50 = IMG_RESOURCE
                 50 {
                     file {     
-                        import = uploads/tx_armtemplate/
+                        import = uploads/tx_armrolftpl/
                         import.data = field:flexform_field_imagefull
                         import.data.override = field:flexform_field_imagemob
                         import.data.override.if {
@@ -171,42 +184,148 @@ tt_content.gridelements_pi1.20.10.setup {
                 45.data = field:flexform_field_heading
                 45.wrap = |
 
-                47 = TEXT
-                47.data = field:flexform_field_subheading
-                47.required = 1
-                47.wrap = <p><span>|</span></p>
+                50 = TEXT
+                50.data = field:flexform_field_htype
+                50.wrap = </|>
+
+                55 = TEXT
+                55.data = field:flexform_field_subheading
+                55.required = 1
+                55.wrap = <p><span>|</span></p>
+               
+                wrap = |</div></div>
+            }
+        }
+        prepend.wrap = <div class="item">|</div>
+    }
+    
+    # Footer container
+    4 < lib.gridelements.defaultGridSetup
+    4 {
+        columns {
+            10 < .default
+	}
+	wrap = <div class="container footer-links"><div class="row">|</div></div>
+    }
+
+    # Video component
+    5 < lib.gridelements.defaultGridSetup
+    5 {
+        prepend = COA
+        prepend {
+            10 = COA
+            10 {
+                10 = TEXT
+                10 {
+                    data = field:flexform_field_video
+                    stdWrap.wrap = <video class="videobanner" autoplay="1" loop="1" muted="1"><source src="uploads/tx_armrolftpl/|" type="video/mp4"></video>
+                }
+                stdWrap.typolink.parameter.data = field:header_link
+                wrap = |
+            }
+            20 = COA
+            20 {
+                10 = TEXT
+                10.value = <div class="text
+
+                20 = TEXT
+                20.data = field:flexform_field_hpos
+                20.noTrimWrap = | |"><div class="fluid-container">|
+
+                30 = TEXT
+                30.data = field:flexform_field_htype
+                30.noTrimWrap = |<| class="|
+
+                40 = TEXT
+                40.data = field:flexform_field_color
+                40.wrap = |">
+
+                45 = TEXT
+                45.data = field:flexform_field_heading
+                45.wrap = |
 
                 50 = TEXT
                 50.data = field:flexform_field_htype
                 50.wrap = </|>
+
+                55 = TEXT
+                55.data = field:flexform_field_subheading
+                55.required = 1
+                55.wrap = <p><span>|</span></p>
+               
                 wrap = |</div></div>
             }
         }
-        prepend.wrap = <div class="slide">|</div>
+        prepend.wrap = <div class="banner-media">|</div>
     }
-    # Slider container
-    3 < lib.gridelements.defaultGridSetup
-    3 {
-        columns {
-            10 < .default
-	}
-	wrap = <div class="slideshow"><div class="mask"><div class="slideset">|</div></div></div>
+
+    # YouTube video
+    6 < lib.gridelements.defaultGridSetup
+    6 {
+
+        prepend = COA
+        prepend {
+            10 = COA
+            10 {
+                10 = TEXT
+                10.data = field:flexform_field_video
+                10.wrap = <div class="videoWrapper"><iframe src="https://www.youtube.com/embed/|
+                
+                20 = TEXT
+                20.data = field:flexform_field_video
+                20.wrap = ?autoplay=1&loop=1&controls=0&fs=0&iv_load_policy=3&version=3&playlist=|"  webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="0"></iframe></div>
+            }
+            20 = COA
+            20 {
+                10 = TEXT
+                10.value = <div class="text
+
+                20 = TEXT
+                20.data = field:flexform_field_hpos
+                20.noTrimWrap = | |"><div class="fluid-container">|
+
+                30 = TEXT
+                30.data = field:flexform_field_htype
+                30.noTrimWrap = |<| class="|
+
+                40 = TEXT
+                40.data = field:flexform_field_color
+                40.wrap = |">
+
+                45 = TEXT
+                45.data = field:flexform_field_heading
+                45.wrap = |
+
+                50 = TEXT
+                50.data = field:flexform_field_htype
+                50.wrap = </|>
+
+                55 = TEXT
+                55.data = field:flexform_field_subheading
+                55.required = 1
+                55.wrap = <p><span>|</span></p>
+               
+                wrap = |</div></div>
+            }
+            wrap = <div class="banner-media">|</div>
+        }
     }
+
     # 50-50 container
-    4 < lib.gridelements.defaultGridSetup
-    4 {
+    7 < lib.gridelements.defaultGridSetup
+    7 {
         columns {
             10 < .default
             10.wrap = <div class="col-sm-6">|</div>
             20 < .default
             20.wrap = <div class="col-sm-6 rhs">|</div>
 	}
-	wrap = <div class="row limit1400">|</div>
+	wrap = <div class="row">|</div>
     }
 
     # 33-66 container
-    5 < lib.gridelements.defaultGridSetup
-    5 {
+    8 < lib.gridelements.defaultGridSetup
+    8 {
         columns {
             10 < .default
             10.wrap = <div class="col-sm-4 dummy-cell">|</div>
@@ -230,10 +349,10 @@ tt_content.gridelements_pi1.20.10.setup {
             equals = 1
         }
     }
-
+    
     # 66-33 container
-    6 < lib.gridelements.defaultGridSetup
-    6 {
+    9 < lib.gridelements.defaultGridSetup
+    9 {
         columns {
             10 < .default
             10.wrap = <div class="col-sm-8 dummy-cell">|</div>
@@ -258,21 +377,91 @@ tt_content.gridelements_pi1.20.10.setup {
         }
     }
 
-     # Text component
-    7 < lib.gridelements.defaultGridSetup
-    7 {
+    # Image block
+    10 < lib.gridelements.defaultGridSetup
+    10 {
         prepend = COA
         prepend {
             10 = COA
             10 {
-                
+                10 = IMG_RESOURCE
+                10 {
+                    file {     
+                        import = uploads/tx_armrolftpl/
+                        import.data = field:flexform_field_imagefull
+                        width = 2560
+                    }
+                    stdWrap.wrap = <img class="visible-big" src="|" alt
+                }
                 20 = TEXT
-                20.data = field:flexform_field_align
-                20.noTrimWrap =  |<div class="armabove | |
+                20 {
+                    data = field:flexform_field_imgalt
+                    stdWrap.wrap =  ="|" />
+                }
 
-                25 = TEXT
-                25.data = field:flexform_field_bgcolor
-                25.noTrimWrap =  | |">|
+                30 = IMG_RESOURCE
+                30 {
+                    file {     
+                        import = uploads/tx_armrolftpl/
+                        import.data = field:flexform_field_imagefull
+                        import.data.override = field:flexform_field_imagemid
+                        import.data.override.if {
+                            isTrue.data = field:flexform_field_imagemid
+                        }
+                        width = 1440
+                    }
+                    stdWrap.wrap = <img class="visible-mid" src="|" alt
+                }
+                40 = TEXT
+                40 {
+                    data = field:flexform_field_imgalt
+                    stdWrap.wrap =  ="|" />
+                }
+
+                50 = IMG_RESOURCE
+                50 {
+                    file {     
+                        import = uploads/tx_armrolftpl/
+                        import.data = field:flexform_field_imagefull
+                        import.data.override = field:flexform_field_imagemob
+                        import.data.override.if {
+                            isTrue.data = field:flexform_field_imagemob
+                        }
+                        width = 992
+                    }
+                    stdWrap.wrap = <img class="visible-small" src="|" alt
+                }
+                60 = TEXT
+                60 {
+                    data = field:flexform_field_imgalt
+                    stdWrap.wrap =  ="|" />
+                }
+
+                wrap = <div class="fullwidth-img">|</div>
+            }
+        }
+    }
+
+     # Vimeo video
+    11 < lib.gridelements.defaultGridSetup
+    11 {
+
+        prepend = COA
+        prepend {
+            10 = COA
+            10 {
+                10 = TEXT
+                10.data = field:flexform_field_video
+                10.wrap = <div class="videoWrapper"><iframe src="https://player.vimeo.com/video/|?autoplay=1&loop=1&muted=1"  webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="0"></iframe></div>
+            }
+            20 = COA
+            20 {
+                10 = TEXT
+                10.value = <div class="text
+
+                20 = TEXT
+                20.data = field:flexform_field_hpos
+                20.noTrimWrap = | |"><div class="fluid-container">|
 
                 30 = TEXT
                 30.data = field:flexform_field_htype
@@ -282,315 +471,22 @@ tt_content.gridelements_pi1.20.10.setup {
                 40.data = field:flexform_field_color
                 40.wrap = |">
 
+                45 = TEXT
+                45.data = field:flexform_field_heading
+                45.wrap = |
+
                 50 = TEXT
-                50.data = field:flexform_field_heading
-                50.stdWrap.typolink {
-                    parameter.data = field:flexform_field_link
-                    required = 1
-                }
+                50.data = field:flexform_field_htype
+                50.wrap = </|>
 
-                60 = TEXT
-                60.data = field:flexform_field_htype
-                60.wrap = </|></div>
-                
-                70 = TEXT
-                70.data = field:flexform_field_bgcolor
-                70.noTrimWrap =  |<div class="armbelow |"></div>|
+                55 = TEXT
+                55.data = field:flexform_field_subheading
+                55.required = 1
+                55.wrap = <p><span>|</span></p>
+               
+                wrap = |</div></div>
             }
-        }
-        prepend.wrap = |
-    }
-
-    # Image block
-    8 < lib.gridelements.defaultGridSetup
-    8 {
-
-        prepend = COA
-        prepend {
-            10 = COA
-            10 {
-                10 = IMG_RESOURCE
-                10 {
-                    file {     
-                        import = uploads/tx_armtemplate/
-                        import.data = field:flexform_field_imagefull
-                        width = 2560
-                    }
-                    stdWrap.wrap = <img class="visible-big" src="|" alt
-                }
-                20 = TEXT
-                20 {
-                    data = field:flexform_field_imgalt
-                    stdWrap.wrap =  ="|" />
-                }
-
-                30 = IMG_RESOURCE
-                30 {
-                    file {     
-                        import = uploads/tx_armtemplate/
-                        import.data = field:flexform_field_imagefull
-                        import.data.override = field:flexform_field_imagemid
-                        import.data.override.if {
-                            isTrue.data = field:flexform_field_imagemid
-                        }
-                        width = 1440
-                    }
-                    stdWrap.wrap = <img class="visible-mid" src="|" alt
-                }
-                40 = TEXT
-                40 {
-                    data = field:flexform_field_imgalt
-                    stdWrap.wrap =  ="|" />
-                }
-
-                50 = IMG_RESOURCE
-                50 {
-                    file {     
-                        import = uploads/tx_armtemplate/
-                        import.data = field:flexform_field_imagefull
-                        import.data.override = field:flexform_field_imagemob
-                        import.data.override.if {
-                            isTrue.data = field:flexform_field_imagemob
-                        }
-                        width = 992
-                    }
-                    stdWrap.wrap = <img class="visible-small" src="|" alt
-                }
-                60 = TEXT
-                60 {
-                    data = field:flexform_field_imgalt
-                    stdWrap.wrap =  ="|" />
-                }
-
-                wrap = <div class="fullwidth-img">|</div>
-            }
+            wrap = <div class="banner-media">|</div>
         }
     }
-
-    # Max 1400 width block
-    9 < lib.gridelements.defaultGridSetup
-    9 {
-        columns {
-            10 < .default
-            10.wrap = <div class="limit1400">|</div>
-	}
-	wrap = |
-    }
-
-    # 50-50 container
-    10 < lib.gridelements.defaultGridSetup
-    10 {
-        columns {
-            10 < .default
-            10.wrap = <div class="col-sm-6 dummy-cell">|</div>
-            10.wrap.override = <div class="col-sm-6">|</div>
-            10.wrap.override.if {
-                value.data = field:flexform_field_nodummy
-                equals = 1
-            }
-            20 < .default
-            20.wrap = <div class="col-sm-6 dummy-cell rhs">|</div>
-            20.wrap.override = <div class="col-sm-6 rhs">|</div>
-            20.wrap.override.if {
-                value.data = field:flexform_field_nodummy
-                equals = 1
-            }
-	}
-	wrap = <div class="row dummy-table bggrey"><div class="dummy-table-row">|</div></div>
-        wrap.override = <div class="row bggrey">|</div>
-        wrap.override.if {
-            value.data = field:flexform_field_nodummy
-            equals = 1
-        }
-    }
-
-    # Image block with pre-def position
-    11 < lib.gridelements.defaultGridSetup
-    11 {
-
-        prepend = COA
-        prepend {
-            10 = COA
-            10 {
-
-                5 = COA
-                5 {
-                    10 = TEXT
-                    10.value = <div class="insidepos
-                    
-                    20 = TEXT
-                    20.data = field:flexform_field_hpos
-                    20.noTrimWrap = | |">|
-
-                    30 = TEXT
-                    30.data = field:flexform_field_htype
-                    30.wrap = <|
-
-                    40 = TEXT
-                    40.data = field:flexform_field_color
-                    40.noTrimWrap = | class="|">|
-
-                    50 = TEXT
-                    50.data = field:flexform_field_heading
-                    50.wrap = |
-                    # 50.stdWrap.typolink.parameter.data = field:header_link
-
-                    60 = TEXT
-                    60.data = field:flexform_field_htype
-                    60.wrap = </|></div>
-                }
-
-                10 = IMG_RESOURCE
-                10 {
-                    file {     
-                        import = uploads/tx_armtemplate/
-                        import.data = field:flexform_field_imagefull
-                        width = 2560
-                    }
-                    stdWrap.wrap = <img class="visible-big" src="|" alt
-                }
-                20 = TEXT
-                20 {
-                    data = field:flexform_field_imgalt
-                    stdWrap.wrap =  ="|" />
-                }
-
-                30 = IMG_RESOURCE
-                30 {
-                    file {     
-                        import = uploads/tx_armtemplate/
-                        import.data = field:flexform_field_imagefull
-                        import.data.override = field:flexform_field_imagemid
-                        import.data.override.if {
-                            isTrue.data = field:flexform_field_imagemid
-                        }
-                        width = 1440
-                    }
-                    stdWrap.wrap = <img class="visible-mid" src="|" alt
-                }
-                40 = TEXT
-                40 {
-                    data = field:flexform_field_imgalt
-                    stdWrap.wrap =  ="|" />
-                }
-
-                50 = IMG_RESOURCE
-                50 {
-                    file {     
-                        import = uploads/tx_armtemplate/
-                        import.data = field:flexform_field_imagefull
-                        import.data.override = field:flexform_field_imagemob
-                        import.data.override.if {
-                            isTrue.data = field:flexform_field_imagemob
-                        }
-                        width = 992
-                    }
-                    stdWrap.wrap = <img class="visible-small" src="|" alt
-                }
-                60 = TEXT
-                60 {
-                    data = field:flexform_field_imgalt
-                    stdWrap.wrap =  ="|" />
-                }
-                
-                
-                stdWrap.typolink.parameter.data = field:header_link
-                wrap = <div class="fullwidth-img">|</div>
-            }
-        }
-    }
-
-    # Infinite Slider container
-    12 < lib.gridelements.defaultGridSetup
-    12 {
-        columns {
-            10 < .default
-            10.wrap = |
-            
-	}
-	wrap = <section class="variable slider">|</section>
-    }
-
-    # Icon Slides
-    13 < lib.gridelements.defaultGridSetup
-    13 {
-
-        prepend = COA
-        prepend {
-            10 = COA
-            10 {
-
-                10 = IMG_RESOURCE
-                10 {
-                    file {     
-                        import = uploads/tx_armtemplate/
-                        import.data = field:flexform_field_slide
-                        width = 240
-                        height = 160c
-                    }
-                    stdWrap.wrap = <img src="|" alt
-                }
-                20 = TEXT
-                20 {
-                    data = field:flexform_field_imgalt
-                    stdWrap.wrap =  ="|" />
-                }             
-                stdWrap.typolink {
-                    parameter.data = field:flexform_field_link
-                }
-            }
-            wrap = |
-        }
-    }
-
-    # YouTube video
-    14 < lib.gridelements.defaultGridSetup
-    14 {
-
-        prepend = COA
-        prepend {
-            10 = COA
-            10 {
-
-                10 = TEXT
-                10.data = field:flexform_field_video
-                10.stdWrap.wrap = <iframe src="|" width="560" height="349" frameborder="0" allowfullscreen></iframe>
-            }
-            wrap = <div class="slide"><div class="videoWrapper">|</div></div>
-        }
-    }
-
-    # 50-50 container
-    15 < lib.gridelements.defaultGridSetup
-    15 {
-        columns {
-            10 < .default
-            10.wrap = <div class="col-sm-6 dummy-cell">|</div>
-            10.wrap.override = <div class="col-sm-6">|</div>
-            10.wrap.override.if {
-                value.data = field:flexform_field_nodummy
-                equals = 1
-            }
-            20 < .default
-            20.wrap = <div class="col-sm-6 dummy-cell rhs">|</div>
-            20.wrap.override = <div class="col-sm-6 rhs">|</div>
-            20.wrap.override.if {
-                value.data = field:flexform_field_nodummy
-                equals = 1
-            }
-	}
-	wrap = <div class="row dummy-table"><div class="dummy-table-row">|</div></div>
-        wrap.override = <div class="row">|</div>
-        wrap.override.if {
-            value.data = field:flexform_field_nodummy
-            equals = 1
-        }
-    }
-}
-
-lib.sitefooter = RECORDS
-lib.sitefooter {
-    tables = tt_content
-    source = {$siteFooterUid}
-    languageField = sys_language_uid
 }

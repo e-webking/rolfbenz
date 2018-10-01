@@ -1,73 +1,95 @@
-lib.menu = HMENU
-lib.menu {
-
-    entryLevel = 0
-    wrap = <ul id="nav" class="">|</ul>  
-	
+lib.mainMenu = HMENU
+lib.mainMenu {
+    wrap = <ul class="nav navbar-nav">|</ul>
+    
     1 = TMENU
     1 {
-            expAll = 1
-            noBlur=1
-            NO {
-                    ATagTitle.field = description // title
-                    stdWrap.htmlSpecialChars = 1
-                    wrapItemAndSub = <li>|</li>
+        expAll = 1
+        noBlur=1
 
-            }
-            ACT= 1
-            ACT {
-                    stdWrap.innerWrap= |
-                    ATagTitle.field = title // description
-                    stdWrap.htmlSpecialChars = 1
-                    wrapItemAndSub = <li class="active">|</li>
-            }
-            IFSUB = 1
-            IFSUB {
-                            wrapItemAndSub = <li class="dropdown">|</li>
-                            stdWrap.innerWrap= |<a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                            stdWrap.htmlSpecialChars = 1
-            }
-            ACTIFSUB = 1
-            ACTIFSUB < .IFSUB
-            ACTIFSUB {
-                    wrapItemAndSub = <li class="dropdown active">|</li>
-            }
+        NO {
+            allWrap = <li>|</li>
+            ATagTitle.field = description // title
+            stdWrap.htmlSpecialChars = 1
+        }
+        IFSUB = 1
+        IFSUB {	
+            # doNotLinkIt = 1
+            wrapItemAndSub = <li class="dropdown">|</li>
+            stdWrap.innerWrap= |<a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle arrow"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+            ATagTitle.field = description // title
+            stdWrap.htmlSpecialChars = 1
+        }
+
+        ACTIFSUB < .IFSUB
+        ACTIFSUB {
+            wrapItemAndSub = <li class="dropdown active">|</li>
+        }
+        CURIFSUB < .ACTIFSUB
     }
 
     2 = TMENU
     2 {
-            wrap = <ul class="dropdown-menu" role="menu">|</ul>
-            noBlur=1
-            expAll = 1
-            NO = 1
-            NO {
-                    wrapItemAndSub = <li>|</li>
-                    ATagTitle.field = description // title
-                    stdWrap.htmlSpecialChars = 1
-            }
-            ACT= 1
-            ACT.wrapItemAndSub = <li class="active">|</li>
+        noBlur=1
+        expAll = 1
+        stdWrap.dataWrap = <ul class="dropdown-menu" role="menu">|</ul>
+        NO {
+            wrapItemAndSub = <li>|</li>
+            ATagTitle.field = description // title
+            stdWrap.htmlSpecialChars = 1
+        }
+        IFSUB = 1
+        IFSUB {
+            # doNotLinkIt = 1
+            wrapItemAndSub = <li class="dropdown-submenu">|</li>
+            ATagParams = class="MenuBarItemSubmenu"
+            stdWrap.htmlSpecialChars = 1
+        }
+        ACT= 1
+        ACT.wrapItemAndSub = <li class="dropdown-submenu active">|</li>
 
-            IFSUB = 1
-            IFSUB.wrapItemAndSub = <li class="dropdown-submenu">|</li>
-
-            ACTIFSUB= 1
-            ACTIFSUB.wrapItemAndSub = <li class="dropdown-submenu active">|</li>
+        ACTIFSUB < .IFSUB
+        ACTIFSUB {
+            wrapItemAndSub = <li class="dropdown-submenu active">|</li>
+        }
     }
 
     3 = TMENU
     3 {
-            wrap = <ul class="dropdown-menu">|</ul>
-            noBlur=1
-            NO = 1
-            NO {
-                    wrapItemAndSub = <li>|</li>
-                    ATagTitle.field = description // title
-                    stdWrap.htmlSpecialChars = 1
-            }
+        wrap = <ul class="dropdown-menu">|</ul>
+        noBlur=1
+        NO {
+            wrapItemAndSub = <li>|</li>
+            ATagTitle.field = description // title
+            stdWrap.htmlSpecialChars = 1
+        }
+        ACT= 1
+        ACT.wrapItemAndSub = <li class="active">|</li>
+    }
+}
 
-            ACT= 1
-            ACT.wrapItemAndSub = <li class="active">|</li>
+lib.leftMenu = COA
+lib.leftMenu {
+
+    1 = TEXT
+    1 {
+        required = 1
+        data = page:title
+        wrap = <h2>|</h2>
+    }
+
+    2 = HMENU
+    2 {
+        wrap = <ul class="subNav">|</ul>
+        special = directory
+        
+        expAll = 1
+
+        1 = TMENU
+        1 {
+            expAll = 1
+            NO.allWrap = <li>|</li>
+        }
     }
 }
 
@@ -123,29 +145,26 @@ lib.mobMenu {
 		ACT= 1
 		ACT.wrapItemAndSub = <li class="active">|</li>
 	}
+	
+	4 < .3
  }
 
-
 #all share links
-lib.nav_share = COA
-lib.nav_share {
+lib.navShare = COA
+lib.navShare {
    5 = TEXT
    5.value = <a target="_blank" href="{$facebook_url}" class="share fb"><!--  --></a>
    5.if.isTrue = {$show_facebook}
-   
-   10 = TEXT
-   10.value = <a target="_blank" href="{$twitter_url}" class="share twt"><!--  --></a>
-   10.if.isTrue = {$show_twitter}
    
    15 = TEXT
    15.value = <a target="_blank" href="{$youtube_url}" class="share yt"><!--  --></a>
    15.if.isTrue = {$show_youtube}
    
    20 = TEXT
-   20.value = <a target="_blank" href="{$gplus_url}" class="share gplus"><!--  --></a>
-   20.if.isTrue = {$show_gplus}
+   20.value = <a target="_blank" href="{$pinterest_url}" class="share pinterest"><!--  --></a>
+   20.if.isTrue = {$show_pinterest}
    
    25 = TEXT
-   25.value = <a target="_blank" href="{$linkedin_url}" class="share ln"><!--  --></a>
-   25.if.isTrue = {$show_linkedin}
+   25.value = <a target="_blank" href="{$instagram_url}" class="share instagram"><!--  --></a>
+   25.if.isTrue = {$show_instagram}
 }

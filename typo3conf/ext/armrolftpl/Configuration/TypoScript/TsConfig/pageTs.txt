@@ -3,7 +3,11 @@ TCEFORM.tt_content{
 
     }
     section_frame {
-
+        addItems {
+            100 = one-third desk, half mobile
+            200 = clearfix-mobile
+            210 = clearfix-desktop
+        }
     }
 }
 

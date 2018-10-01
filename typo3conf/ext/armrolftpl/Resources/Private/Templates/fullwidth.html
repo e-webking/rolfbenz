@@ -1,25 +1,23 @@
-<div class="wrapper">
-    <div class="armfullwidth">
-        <header id="header">
-            <f:render partial="Header" arguments="{_all}"/>
-        </header>
-        <main role="main">
-            <f:cObject typoscriptObjectPath="lib.banner" />
-            <f:cObject typoscriptObjectPath="lib.armsearch" />
-            <div class="container-fluid">
-                <f:cObject typoscriptObjectPath="lib.breadcrumb" />
-                <div class="row">
-                    <div id="content" class="col-sm-12">
-                        <!--TYPO3SEARCH_begin-->
-                                <f:cObject typoscriptObjectPath="lib.contentmain" />
-                        <!--TYPO3SEARCH_end-->
-                    </div>
+<f:layout name="Default" />
+<f:section name="content">
+    <main role="main">
+        <!-- Full Header Banner Column -->
+        <div class="banner-div">
+            <section class="headBanner home">
+                <f:cObject typoscriptObjectPath="lib.banner" />
+            </section>
+        </div>
+        <!-- End -->
+        <div class="container">
+            <f:cObject typoscriptObjectPath="lib.breadcrumb" />
+            <div class="row">
+                <div class="col-sm-12">
+                <!--TYPO3SEARCH_begin-->
+                        <f:cObject typoscriptObjectPath="lib.contentmain" />
+                <!--TYPO3SEARCH_end-->
                 </div>
-            </div>	
-        </main>
-    </div>
-    <footer class="footer">
-        <f:cObject typoscriptObjectPath="lib.contentfooter" />
-    </footer>
-    <a href="#" class="btn-top">back to top</a>
-</div>
+            </div>
+        </div>	
+    </main>
+    
+</f:section>

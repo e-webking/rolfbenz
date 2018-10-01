@@ -1,0 +1,23 @@
+<div class="wrapper">
+    <div class="armfullwidth">
+        
+        <f:render partial="Header" arguments="{_all}"/>
+        
+        <!-- Body -->
+        <f:render section="content" />
+        <!-- End -->
+        
+        <footer>
+            <hr class="separator" />
+            <f:cObject typoscriptObjectPath="lib.sitefooter" />
+            <div class="container footer-social">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <h4>Follow us</h4>
+                        <f:cObject typoscriptObjectPath="lib.navShare" />
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
